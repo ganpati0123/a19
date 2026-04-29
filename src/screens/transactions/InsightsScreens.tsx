@@ -9,6 +9,7 @@ import type { TxStackScreenProps } from '@navigation/types';
 
 export function InsightsScreen({ navigation }: TxStackScreenProps<'Insights'>) {
   const theme = useTheme();
+  const totals = totalsForCategory();
   const cats = Object.keys(transactionCategoryLabels) as Array<keyof typeof transactionCategoryLabels>;
   return (
     <Screen>
@@ -28,7 +29,7 @@ export function InsightsScreen({ navigation }: TxStackScreenProps<'Insights'>) {
       <SectionHeader title="By category" subtitle="Tap any to drill down" />
       <NeumorphCard style={{ marginHorizontal: 16, paddingVertical: 4 }}>
         {cats.slice(0, 12).map((c, i) => {
-          const total = totalsForCategory(c);
+          const total = totals[c] ?? 0;
           return (
             <ListRow
               key={c}
@@ -49,7 +50,7 @@ export function InsightsScreen({ navigation }: TxStackScreenProps<'Insights'>) {
 export function CategoryDetailScreen({ route, navigation }: TxStackScreenProps<'CategoryDetail'>) {
   const theme = useTheme();
   const id = route.params.categoryId as keyof typeof transactionCategoryLabels;
-  const total = totalsForCategory(id);
+  const total = totalsForCategory()[id] ?? 0;
   const txs = transactions.filter((t) => t.category === id).slice(0, 30);
   return (
     <Screen>
