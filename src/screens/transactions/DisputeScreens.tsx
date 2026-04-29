@@ -22,7 +22,7 @@ export function DisputeScreen({ route, navigation }: TxStackScreenProps<'Dispute
       <SectionHeader title="What happened?" />
       <NeumorphCard style={{ marginHorizontal: 16, paddingVertical: 4 }}>
         {disputeReasons.map((r, i) => (
-          <ListRow key={r.id} title={r.label} subtitle={r.description} onPress={() => navigation.navigate('DisputeReason', { transactionId: route.params.transactionId, reasonId: r.id })} divider={i < disputeReasons.length - 1} />
+          <ListRow key={r.id} leading={<Text style={{ fontSize: 22 }}>{r.icon}</Text>} title={r.label} onPress={() => navigation.navigate('DisputeReason', { transactionId: route.params.transactionId, reasonId: r.id })} divider={i < disputeReasons.length - 1} />
         ))}
       </NeumorphCard>
     </Screen>

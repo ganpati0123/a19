@@ -66,7 +66,7 @@ export type TransactionsStackParamList = {
 export type BillsStackParamList = {
   BillsHome: undefined;
   CategoryHome: { category: string };
-  Operator: { category: string; operatorId?: string };
+  Operator: { category: string; operatorId?: string; phone?: string };
   OperatorPlans: { operatorId: string; phone?: string };
   PlanDetail: { planId: string; phone?: string };
   BillSummary: { operatorId: string; planId?: string; phone?: string; amount: number };
