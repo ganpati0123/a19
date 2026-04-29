@@ -55,7 +55,7 @@ function buildTheme(mode: ThemeMode): Theme {
     spacing,
     radii,
     typography,
-    neumorph: mode === 'dark' ? neumorphSpec.dark : neumorphSpec.light,
+    neumorph: (mode === 'dark' ? neumorphSpec.dark : neumorphSpec.light) as Theme['neumorph'],
   };
 }
 
