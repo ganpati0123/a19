@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Background gradient: deep navy with subtle warm highlight -->
+    <radialGradient id="bgGrad" cx="30%" cy="20%" r="120%">
+      <stop offset="0%" stop-color="#1A2347"/>
+      <stop offset="45%" stop-color="#0E1430"/>
+      <stop offset="100%" stop-color="#04060F"/>
+    </radialGradient>
+
+    <!-- Premium neon gradient for the mark -->
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="35%" stop-color="#6366F1"/>
+      <stop offset="70%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+
+    <!-- Gold accent gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+
+    <!-- Glass overlay -->
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Top specular highlight -->
+    <linearGradient id="specGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft drop shadow -->
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" in="SourceAlpha"/>
+      <feOffset dx="0" dy="18"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Inner shadow for depth on monogram -->
+    <filter id="innerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <clipPath id="tileClip">
+      <rect x="112" y="112" width="800" height="800" rx="180" ry="180"/>
+    </clipPath>
+
+    <clipPath id="innerCardClip">
+      <rect x="232" y="232" width="560" height="560" rx="140" ry="140"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background tile with rounded corners -->
+  <rect x="112" y="112" width="800" height="800" rx="180" ry="180" fill="url(#bgGrad)"/>
+
+  <!-- Subtle tech grid -->
+  <g clip-path="url(#tileClip)" opacity="0.07">
+    <g stroke="#7DD3FC" stroke-width="1.2">
+      <line x1="112" y1="260" x2="912" y2="260"/>
+      <line x1="112" y1="420" x2="912" y2="420"/>
+      <line x1="112" y1="580" x2="912" y2="580"/>
+      <line x1="112" y1="740" x2="912" y2="740"/>
+      <line x1="260" y1="112" x2="260" y2="912"/>
+      <line x1="420" y1="112" x2="420" y2="912"/>
+      <line x1="580" y1="112" x2="580" y2="912"/>
+      <line x1="740" y1="112" x2="740" y2="912"/>
+    </g>
+  </g>
+
+  <!-- Outer Ultra-Pro insignia rings -->
+  <g clip-path="url(#tileClip)" opacity="0.55">
+    <circle cx="512" cy="500" r="320" fill="none" stroke="url(#neonGrad)" stroke-width="3" stroke-dasharray="6 14"/>
+    <circle cx="512" cy="500" r="288" fill="none" stroke="#22D3EE" stroke-width="1.2" opacity="0.5"/>
+  </g>
+
+  <!-- Soft neon halo behind the inner tile -->
+  <g clip-path="url(#tileClip)">
+    <circle cx="512" cy="500" r="240" fill="url(#neonGrad)" opacity="0.40" filter="url(#glow)"/>
+  </g>
+
+  <!-- Inner glass card -->
+  <g filter="url(#softShadow)">
+    <rect x="232" y="232" width="560" height="560" rx="140" ry="140" fill="url(#neonGrad)"/>
+    <rect x="232" y="232" width="560" height="560" rx="140" ry="140" fill="url(#glassGrad)"/>
+    <rect x="246" y="246" width="532" height="532" rx="128" ry="128"
+          fill="none" stroke="#FFFFFF" stroke-opacity="0.32" stroke-width="2"/>
+  </g>
+
+  <!-- Top specular highlight contained within the inner card -->
+  <g clip-path="url(#innerCardClip)" opacity="0.95">
+    <path d="M 232 232 Q 512 360 792 232 L 792 380 Q 512 470 232 380 Z"
+          fill="url(#specGrad)"/>
+  </g>
+
+  <!-- Monogram group -->
+  <g filter="url(#innerGlow)">
+    <!-- The "P" -->
+    <g transform="translate(310 322)">
+      <!-- vertical stem -->
+      <rect x="0" y="0" width="78" height="380" rx="22" fill="#FFFFFF"/>
+      <!-- bowl of P (outer) -->
+      <path d="M 78 0
+               L 220 0
+               A 110 110 0 0 1 220 220
+               L 78 220
+               Z"
+            fill="#FFFFFF"/>
+      <!-- inner cut of P -->
+      <path d="M 78 60
+               L 208 60
+               A 50 50 0 0 1 208 160
+               L 78 160
+               Z"
+            fill="url(#neonGrad)"/>
+    </g>
+
+    <!-- The "X" formed by two crossing payment arrows -->
+    <g transform="translate(560 322)" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Diagonal 1 -->
+      <path d="M 36 36 L 244 244" stroke="#FFFFFF" stroke-width="62" fill="none"/>
+      <!-- Diagonal 2 -->
+      <path d="M 244 36 L 36 244" stroke="#FFFFFF" stroke-width="62" fill="none"/>
+
+      <!-- Gold arrowheads -->
+      <path d="M 36 36 L 96 30 L 30 96 Z" fill="url(#goldGrad)"/>
+      <path d="M 244 36 L 184 30 L 250 96 Z" fill="url(#goldGrad)"/>
+      <path d="M 244 244 L 184 250 L 250 184 Z" fill="url(#goldGrad)"/>
+      <path d="M 36 244 L 96 250 L 30 184 Z" fill="url(#goldGrad)"/>
+
+      <!-- Center medallion (rupee) -->
+      <g transform="translate(140 140)">
+        <circle r="46" fill="url(#goldGrad)" stroke="#FFFFFF" stroke-width="5"/>
+        <!-- Stylized ₹ -->
+        <g transform="translate(-15 -22)" stroke="#0B0F19" stroke-width="6.5" fill="none" stroke-linecap="round">
+          <path d="M 0 0 L 28 0"/>
+          <path d="M 0 12 L 28 12"/>
+          <path d="M 4 0 C 22 0 22 22 4 22 L 0 22 L 24 44"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Ultra Pro plate -->
+  <g transform="translate(512 822)">
+    <path d="M -110 0 L -88 -24 L 88 -24 L 110 0 L 88 24 L -88 24 Z"
+          fill="url(#goldGrad)" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.9"/>
+    <text x="0" y="7" text-anchor="middle"
+          font-family="Inter, Helvetica, Arial, sans-serif"
+          font-weight="900" font-size="22" fill="#0B0F19" letter-spacing="4">
+      ULTRA · PRO
+    </text>
+  </g>
+</svg>
